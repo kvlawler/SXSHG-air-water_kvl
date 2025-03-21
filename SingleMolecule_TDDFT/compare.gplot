@@ -1,0 +1,27 @@
+ymin="0.00"
+ymax="*"
+xmin="500"
+xmax="600"
+prefix="compare"
+rm -f ${prefix}.ps ${prefix}.pdf
+echo "
+set term postscript enhanced color font \"Times,20\"
+set out \"${prefix}.ps\"
+set xrange [$xmin:$xmax]
+set yrange [$ymin:$ymax]
+set xlabel \"Energy (eV)\" offset 0,0.5 rotate parallel 
+set ylabel \"Oscillator Strength\" offset 2.5,0,0 rotate parallel
+set xtics 10 offset graph 0,0.01 
+set mxtics 10
+set ytics 0.002 border mirror norotate offset graph 0.01,0.00 format \" \" 
+set mytics 2
+set lmargin at screen 0.050 
+set rmargin at screen 1.000
+set tmargin at screen 1.00
+set bmargin at screen -0.02
+set key top right samplen 1
+plot \"1h2o_b3lyp_cc-pv5z_sfs_2eV.dat\" using 1:2 lt 1 lw 2 lc rgb '#0000FF' with lines title \"Fundamental\",\
+     \"1h2o_b3lyp_cc-pv5z_sfs_2eV.dat\" using (\$1 / 2):2 lt 1 lw 2 lc rgb '#FF0000' with lines title \"Second Harmonic\"
+exit" | gnuplot -persist
+ps2pdf ${prefix}.ps
+rm ${prefix}.ps
