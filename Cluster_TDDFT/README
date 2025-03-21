@@ -1,0 +1,7 @@
+Q-Chem inputs (AxDy_z.Nw.in), outputs (.out), and checkpoint (.fchk)  files 
+for calculating the core excited states from different surface hydrogen bonding water clusters.
+
+x, y, and z correspond to a snapshot structure contained in the folder 'xyzs'
+
+N=1 are the TDDFT simualtions of core excited states at the O K-edge 
+N=2 are the TDDFT simulations of core excited states around twice the fundamental frequency of the O K-edge
