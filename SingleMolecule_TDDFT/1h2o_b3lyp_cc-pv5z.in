@@ -1,0 +1,49 @@
+$molecule
+   0 1
+   O   0.0000   0.0000   0.1168
+   H   0.0000   0.7629  -0.4672
+   H   0.0000  -0.7629  -0.4672
+$end
+
+$rem
+   METHOD       B3LYP
+   BASIS        cc-pv5z
+   SYMMETRY     false
+   SYM_IGNORE   true
+$end
+
+@@@
+
+$molecule
+   read
+$end
+
+$rem
+   METHOD            B3LYP
+   BASIS             cc-pv5z
+   SCF_GUESS         read
+   MOM_START         1
+   UNRESTRICTED      true
+   SYMMETRY          false
+   SYMMETRY_IGNORE   true
+   CIS_N_ROOTS       1000
+   TRNSS             true  ! use truncated subspace for TDDFT
+   TRTYPE            3     ! specify occupied orbitals
+   N_SOL             1     ! number core holes, specified in $solute section
+   nto_pairs         3
+   molden_format     true
+   print_orbitals    true
+   gui               2
+   plots             true
+   make_cube_files   true
+$end
+   CORE_IONIZE       1     
+   state_analysis    true
+
+$solute
+   1
+$end
+
+$plots
+  natural_transition_orbital 353-390
+$end

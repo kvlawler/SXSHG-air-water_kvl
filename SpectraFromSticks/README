@@ -1,0 +1,5 @@
+This is a fortran code that broadens a TDDFT stick spectrum
+comprised of the excitation energy and oscillator strength  
+
+For input examples, see any file in Cluster_TDDFT that ends in _sfs.in
+The outputs are stored in their respective _sfs.dat
