@@ -1,0 +1,35 @@
+ymin="0.00"
+ymax="*"
+xmin="510"
+xmax="550"
+prefix="2w_compare"
+rm -f ${prefix}.ps ${prefix}.pdf
+echo "
+set term postscript enhanced color font \"Times,20\"
+set out \"${prefix}.ps\"
+set xrange [$xmin:$xmax]
+set yrange [$ymin:$ymax]
+set title \"Second Harmonic\"
+set xlabel \"Fundamental Frequency (eV)\" offset 0,0.5 rotate parallel 
+set ylabel \"Oscillator Strength\" offset 2.5,0,0 rotate parallel
+set xtics 10 offset graph 0,0.01 
+set mxtics 10
+set ytics 0.002 border mirror norotate offset graph 0.01,0.00 format \" \" 
+set mytics 2
+set lmargin at screen 0.050 
+set rmargin at screen 1.000
+set tmargin at screen 1.000
+set bmargin at screen 0.050
+set key top right samplen 1
+plot \"A0D0_1.2w_sfs.dat\" using (\$1 / 2):2 lt 1 lw 2 lc rgb '#00CED1' with lines title \"A0D0\",\
+     \"A0D1_1.2w_sfs.dat\" using (\$1 / 2):2 lt 1 lw 2 lc rgb '#008040' with lines title \"A0D1\",\
+     \"A0D2_1.2w_sfs.dat\" using (\$1 / 2):2 lt 1 lw 2 lc rgb '#9400D3' with lines title \"A0D2\",\
+     \"A1D0_1.2w_sfs.dat\" using (\$1 / 2):2 lt 1 lw 2 lc rgb '#000000' with lines title \"A1D0\",\
+     \"A1D1_1.2w_sfs.dat\" using (\$1 / 2):2 lt 1 lw 2 lc rgb '#0000FF' with lines title \"A1D1\",\
+     \"A1D2_2.2w_sfs.dat\" using (\$1 / 2):2 lt 1 lw 2 lc rgb '#FF0000' with lines title \"A1D2\",\
+     \"A2D0_1.2w_sfs.dat\" using (\$1 / 2):2 lt 1 lw 2 lc rgb '#00FF7F' with lines title \"A2D0\",\
+     \"A2D1_1.2w_sfs.dat\" using (\$1 / 2):2 lt 1 lw 2 lc rgb '#FF1493' with lines title \"A2D1\",\
+     \"A2D2_2.2w_sfs.dat\" using (\$1 / 2):2 lt 1 lw 2 lc rgb '#B8B000' with lines title \"A2D2\"
+exit" | gnuplot -persist
+ps2pdf ${prefix}.ps
+rm ${prefix}.ps
