@@ -1,0 +1,31 @@
+$molecule
+0 1
+O -1.47711 0.79517 1.11526
+O 2.64679 -0.74818 0.92526
+H 2.36179 0.16502 0.73726
+H 3.13619 -0.83038 1.76726
+H -1.59541 1.37509 1.88226
+H -0.55821 0.73733 0.86726
+O -2.95551 -1.17018 -1.28374
+H -3.43731 -1.94648 -1.40774
+H -2.44691 -1.32218 -0.47974
+O 1.66419 1.07930 -0.83574
+H 2.17359 1.93678 -0.75074
+H 2.29709 0.58143 -1.36274
+$end
+
+$rem
+method                    b3lyp 
+basis                     cc-pv5z 
+mem_total                 48000
+mem_static                8000
+thresh                    12
+scf_convergence           8
+xc_grid                   000075000302
+max_scf_cycles            2000
+symmetry                  false
+sym_ignore                true
+print_orbitals true
+$end
+gui                       2
+molden_format true
