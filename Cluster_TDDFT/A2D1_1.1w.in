@@ -1,0 +1,32 @@
+$molecule
+read
+$end
+
+$rem
+method                    b3lyp 
+basis                     cc-pv5z 
+mem_total                 63000
+mem_static                8000
+thresh                    12
+scf_convergence           8
+xc_grid                   000075000302
+max_scf_cycles            2000
+symmetry                  false
+sym_ignore                true
+scf_guess                 read
+skip_scfman               true
+cis_n_roots               150
+cis_triplets              false
+rpa                       false 
+trnss                     true
+trtype                    3
+n_sol                     1
+nto_pairs                 2
+gui                       2
+print_orbitals            true
+state_analysis            true
+$end
+
+$solute 
+4 
+$end
